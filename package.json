@@ -1,0 +1,21 @@
+{
+  "name": "endsides",
+  "version": "0.0.0",
+  "description": "Endsides allows you to generate compressed HTML/CSS code for static/dynamic websites from PHP scripts.",
+  "homepage": "https://npmjs.org/package/endsides",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endsides/endsides.git"
+  },
+  "keywords": [
+	"template-engine",
+	"rendering-engine",
+	"html-writer",
+	"css-writer"
+  ],
+  "author": "SIGUI Kessé Emmanuel <contact@sikessem.com>",
+  "bugs": {
+    "url": "https://github.com/endsides/endsides/issues"
+  }
+}

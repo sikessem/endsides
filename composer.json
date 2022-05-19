@@ -1,0 +1,38 @@
+{
+    "name": "endsides/endsides",
+    "type": "project",
+    "description": "Endsides allows you to generate compressed HTML/CSS code for static/dynamic websites from PHP scripts.",
+    "homepage": "https://packagist.com/packages/endsides/endsides",
+    "license": "Apache-2.0",
+    "keywords": [
+        "template-engine",
+        "rendering-engine",
+	  	"html-writer",
+	  	"css-writer"
+    ],
+  	"authors": [{
+		"name": "SIGUI Kessé Emmanuel",
+		"homepage": "https://sikessem.com",
+		"email": "contact@sikessem.com",
+		"role": "Developer"
+  	}],
+    "autoload": {
+	  	"psr-4": {
+			"Endsides\\": "src/"
+		}
+    },
+    "support": {
+        "source": "https://github.com/endsides/endsides",
+        "issues": "https://github.com/endsides/endsides/issues"
+    },
+    "require": {
+        "php": ">=8.0"
+    },
+    "config": {
+        "vendor-dir": "php_packages",
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
