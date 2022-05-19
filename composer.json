@@ -1,6 +1,5 @@
 {
     "name": "endsides/endsides",
-    "type": "project",
     "description": "Endsides allows you to generate compressed HTML/CSS code for static/dynamic websites from PHP scripts.",
     "homepage": "https://packagist.com/packages/endsides/endsides",
     "license": "Apache-2.0",
