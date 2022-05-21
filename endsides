@@ -1,0 +1,68 @@
+#!/usr/bin/env php
+<?php
+
+use Endsides\Css\Declaration;
+
+require_once __DIR__ . '/src/autoload.php';
+
+$messages = [];
+
+$declaration = new Declaration('color', 'red', true);
+
+if ($declaration->getProperty() !== 'color') {
+	$messages['failure'][] = 'Declaration property is not set correctly';
+}
+else {
+	$messages['success'][] = 'Declaration property is set correctly';
+}
+
+if ($declaration->getValue() !== 'red') {
+	$messages['failure'][] = 'Declaration value is not set correctly';
+}
+else {
+	$messages['success'][] = 'Declaration value is set correctly';
+}
+
+if (!$declaration->isImportant()) {
+	$messages['failure'][] = 'Declaration is not marked as important';
+}
+else {
+	$messages['success'][] = 'Declaration is marked as important';
+}
+
+if ($declaration->beautify() !== 'color: red !important;') {
+	$messages['failure'][] = 'Declaration is not beautified correctly';
+}
+else {
+	$messages['success'][] = 'Declaration is beautified correctly';
+}
+
+if ($declaration->minify() !== 'color:red!important') {
+	$messages['failure'][] = 'Declaration is not minified correctly';
+}
+else {
+	$messages['success'][] = 'Declaration is minified correctly';
+}
+
+foreach ($messages as $type => $_messages) {
+	foreach ($_messages as $message) {
+		if ($type === 'success') {
+			echo "\033[1;32m ✔";
+		}
+		elseif ($type === 'failure') {
+			echo "\033[1;31m ✘";
+		}
+		elseif ($type === 'warning') {
+			echo "\033[1;33m ⚠";
+		}
+		elseif ($type === 'info') {
+			echo "\033[1;34m ℹ";
+		}
+		elseif ($type === 'debug') {
+			echo "\033[1;35m ⚙";
+		}
+		echo " {$message}\033[0m" . PHP_EOL;
+	}
+}
+
+exit(empty($messages['failure']) ? 0 : 1);
