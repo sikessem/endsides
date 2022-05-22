@@ -2,7 +2,7 @@
 
 namespace Endsides\Css;
 
-class DeclarationBlock {
+class DeclarationBlock implements \ArrayAccess, \IteratorAggregate, \Countable {
 	public function __construct(Declaration ...$declarations) {
 		$this->setDeclarations($declarations);
 	}
@@ -74,5 +74,29 @@ class DeclarationBlock {
 			$this->removeDeclaration($property);
 		}
 		return $this;
+	}
+
+	public function getIterator(): \ArrayIterator {
+		return new \ArrayIterator($this->getDeclarations());
+	}
+
+	public function count(): int {
+		return count($this->getDeclarations());
+	}
+
+	public function offsetExists($offset): bool {
+		return $this->hasDeclaration($offset);
+	}
+
+	public function offsetGet($offset): ?Declaration {
+		return $this->getDeclaration($offset);
+	}
+
+	public function offsetSet($offset, $value): void {
+		$this->addDeclaration($value);
+	}
+
+	public function offsetUnset($offset): void {
+		$this->removeDeclaration($offset);
 	}
 }
