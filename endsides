@@ -1,65 +1,16 @@
 #!/usr/bin/env php
 <?php
 
-use Endsides\Css\Declaration;
-use Endsides\Html\Attribute;
-
-use Endsides\Test\Message;
+use Endsides\Test\Tester;
+use Endsides\Test\CssDeclarationTester;
+use Endsides\Test\HtmlAttributeTester;
 
 require_once __DIR__ . '/src/autoload.php';
 
-$messages = [];
+$declarationTester = new CssDeclarationTester();
+$declarationTester->test();
 
-$declaration = new Declaration('color', 'red', true);
+$attributeTester = new HtmlAttributeTester();
+$attributeTester->test();
 
-if ($declaration->getProperty() !== 'color') {
-	$messages[] = new Message(Message::FAILURE, 'Property is not "color"');
-}
-else {
-	$messages[] = new Message(Message::SUCCESS, 'Property is "color"');
-}
-
-if ($declaration->getValue() !== 'red') {
-	$messages[] = new Message(Message::FAILURE, 'Value is not "red"');
-}
-else {
-	$messages[] = new Message(Message::SUCCESS, 'Value is "red"');
-}
-
-if (!$declaration->isImportant()) {
-	$messages[] = new Message(Message::FAILURE, 'Declaration is not important');
-}
-else {
-	$messages[] = new Message(Message::SUCCESS, 'Declaration is important');
-}
-
-$attribute = new Attribute('style', 'color: red !important;');
-
-if ($attribute->getName() !== 'style') {
-	$messages[] = new Message(Message::FAILURE, 'Attribute name is not "style"');
-}
-else {
-	$messages[] = new Message(Message::SUCCESS, 'Attribute name is "style"');
-}
-
-if ($attribute->getValue() !== 'color: red !important;') {
-	$messages[] = new Message(Message::FAILURE, 'Attribute value is not "color: red !important;"');
-}
-else {
-	$messages[] = new Message(Message::SUCCESS, 'Attribute value is "color: red !important;"');
-}
-
-$count_failures = 0;
-$count_successes = 0;
-
-foreach ($messages as $message) {
-	echo $message . PHP_EOL;
-	if ($message->getType() === Message::FAILURE) {
-		$count_failures++;
-	}
-	else {
-		$count_successes++;
-	}
-}
-
-echo PHP_EOL . 'Total: ' . ($count_failures + $count_successes) . ' (' . $count_successes . ' successes, ' . $count_failures . ' failures)' . PHP_EOL;
+Tester::run();
