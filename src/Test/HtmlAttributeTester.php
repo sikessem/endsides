@@ -8,7 +8,7 @@ class HtmlAttributeTester extends Tester {
 	protected Attribute $attribute;
 
 	public function __construct() {
-		parent::__construct('Html\\Attribute');
+		parent::__construct(Attribute::class);
 		$this->attribute = new Attribute('style', 'color: red;');
 	}
 
