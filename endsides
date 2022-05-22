@@ -4,6 +4,8 @@
 use Endsides\Css\Declaration;
 use Endsides\Html\Attribute;
 
+use Endsides\Test\Message;
+
 require_once __DIR__ . '/src/autoload.php';
 
 $messages = [];
@@ -11,66 +13,53 @@ $messages = [];
 $declaration = new Declaration('color', 'red', true);
 
 if ($declaration->getProperty() !== 'color') {
-	$messages['failure'][] = 'Declaration property is not set correctly';
+	$messages[] = new Message(Message::FAILURE, 'Property is not "color"');
 }
 else {
-	$messages['success'][] = 'Declaration property is set correctly';
+	$messages[] = new Message(Message::SUCCESS, 'Property is "color"');
 }
 
 if ($declaration->getValue() !== 'red') {
-	$messages['failure'][] = 'Declaration value is not set correctly';
+	$messages[] = new Message(Message::FAILURE, 'Value is not "red"');
 }
 else {
-	$messages['success'][] = 'Declaration value is set correctly';
+	$messages[] = new Message(Message::SUCCESS, 'Value is "red"');
 }
 
 if (!$declaration->isImportant()) {
-	$messages['failure'][] = 'Declaration is not marked as important';
+	$messages[] = new Message(Message::FAILURE, 'Declaration is not important');
 }
 else {
-	$messages['success'][] = 'Declaration is marked as important';
+	$messages[] = new Message(Message::SUCCESS, 'Declaration is important');
 }
 
 $attribute = new Attribute('style', 'color: red !important;');
 
 if ($attribute->getName() !== 'style') {
-	$messages['failure'][] = 'Attribute name is not set correctly';
+	$messages[] = new Message(Message::FAILURE, 'Attribute name is not "style"');
 }
 else {
-	$messages['success'][] = 'Attribute name is set correctly';
+	$messages[] = new Message(Message::SUCCESS, 'Attribute name is "style"');
 }
 
 if ($attribute->getValue() !== 'color: red !important;') {
-	$messages['failure'][] = 'Attribute value is not set correctly';
+	$messages[] = new Message(Message::FAILURE, 'Attribute value is not "color: red !important;"');
 }
 else {
-	$messages['success'][] = 'Attribute value is set correctly';
+	$messages[] = new Message(Message::SUCCESS, 'Attribute value is "color: red !important;"');
 }
 
+$count_failures = 0;
+$count_successes = 0;
 
-foreach ($messages as $type => $_messages) {
-	foreach ($_messages as $message) {
-		if ($type === 'success') {
-			echo "\033[1;32m ✔";
-		}
-		elseif ($type === 'failure') {
-			echo "\033[1;31m ✘";
-		}
-		elseif ($type === 'warning') {
-			echo "\033[1;33m ⚠";
-		}
-		elseif ($type === 'info') {
-			echo "\033[1;34m ℹ";
-		}
-		elseif ($type === 'debug') {
-			echo "\033[1;35m ⚙";
-		}
-		echo " {$message}\033[0m" . PHP_EOL;
+foreach ($messages as $message) {
+	echo $message . PHP_EOL;
+	if ($message->getType() === Message::FAILURE) {
+		$count_failures++;
+	}
+	else {
+		$count_successes++;
 	}
 }
 
-if (!empty($messages['failure'])) {
-	echo "\x07";
-	exit(1);
-}
-exit(0);
+echo PHP_EOL . 'Total: ' . ($count_failures + $count_successes) . ' (' . $count_successes . ' successes, ' . $count_failures . ' failures)' . PHP_EOL;
