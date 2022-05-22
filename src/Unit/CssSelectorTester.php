@@ -2,14 +2,14 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Css\Selector;
+use Endsides\Util\Css;
 
 class CssSelectorTester extends Tester {
 	protected $selector;
 
 	public function __construct() {
 		parent::__construct(Selector::class);
-		$this->selector = new Selector('#foo');
+		$this->selector = Css::selector('#foo');
 	}
 
 	public function testPattern(): self {

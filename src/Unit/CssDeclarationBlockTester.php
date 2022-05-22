@@ -2,25 +2,24 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Css\DeclarationBlock;
-use Endsides\Css\Declaration;
+use Endsides\Util\Css;
 
 class CssDeclarationBlockTester extends Tester {
-	protected DeclarationBlock $declarationBlock;
+	protected $declarationBlock;
 
 	public function __construct() {
 		parent::__construct(DeclarationBlock::class);
-		$this->declarationBlock = new DeclarationBlock(...[
-			new Declaration('color', 'red'),
-			new Declaration('font-size', '12px'),
-			new Declaration('font-weight', 'bold'),
+		$this->declarationBlock = Css::declarationBlock(...[
+			Css::declaration('color', 'red'),
+			Css::declaration('font-size', '12px'),
+			Css::declaration('font-weight', 'bold'),
 		]);
 	}
 
 	public function testGetDeclarations(): self {
 		$this->assert($this->declarationBlock->getDeclarations(['color', 'font-size']) == [
-			new Declaration('color', 'red'),
-			new Declaration('font-size', '12px'),
+			Css::declaration('color', 'red'),
+			Css::declaration('font-size', '12px'),
 		], 'GetDeclarations');
 		return $this;
 	}
@@ -28,7 +27,7 @@ class CssDeclarationBlockTester extends Tester {
 	public function testRemoveDeclarations(): self {
 		$this->declarationBlock->removeDeclarations(['color', 'font-size']);
 		$this->assert($this->declarationBlock->getDeclarations() == [
-			new Declaration('font-weight', 'bold'),
+			Css::declaration('font-weight', 'bold'),
 		], 'RemoveDeclarations');
 		return $this;
 	}

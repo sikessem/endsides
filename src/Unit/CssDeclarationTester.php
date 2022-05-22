@@ -2,14 +2,14 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Css\Declaration;
+use Endsides\Util\Css;
 
 class CssDeclarationTester extends Tester {
 	protected $declaration;
 
 	public function __construct() {
 		parent::__construct(Declaration::class);
-		$this->declaration = new Declaration('color', 'red', true);
+		$this->declaration = Css::declaration('color', 'red', true);
 	}
 
 	public function testProperty(): self {
@@ -23,7 +23,7 @@ class CssDeclarationTester extends Tester {
 	}
 
 	public function testImportance(): self {
-		$this->assert($this->declaration->isImportant(), 'Important');
+		$this->assert($this->declaration->isImportant(), 'Importance');
 		return $this;
 	}
 

@@ -2,14 +2,14 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Html\Attribute;
+use Endsides\Util\Html;
 
 class HtmlAttributeTester extends Tester {
-	protected Attribute $attribute;
+	protected $attribute;
 
 	public function __construct() {
 		parent::__construct(Attribute::class);
-		$this->attribute = new Attribute('style', 'color: red;');
+		$this->attribute = Html::attribute('style', 'color: red;');
 	}
 
 	public function testAttributeName(): self {
