@@ -3,12 +3,16 @@
 
 use Endsides\Test\Tester;
 use Endsides\Test\CssDeclarationTester;
+use Endsides\Test\CssDeclarationBlockTester;
 use Endsides\Test\HtmlAttributeTester;
 
 require_once __DIR__ . '/src/autoload.php';
 
 $declarationTester = new CssDeclarationTester();
 $declarationTester->test();
+
+$declarationBlockTester = new CssDeclarationBlockTester();
+$declarationBlockTester->test();
 
 $attributeTester = new HtmlAttributeTester();
 $attributeTester->test();

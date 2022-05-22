@@ -8,7 +8,7 @@ class CssDeclarationTester extends Tester {
 	protected $declaration;
 
 	public function __construct() {
-		parent::__construct('Css\\Declaration');
+		parent::__construct(Declaration::class);
 		$this->declaration = new Declaration('color', 'red', true);
 	}
 
