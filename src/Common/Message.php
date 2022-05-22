@@ -1,6 +1,6 @@
 <?php
 
-namespace Endsides\Unit;
+namespace Endsides\Common;
 
 class Message {
 	const FAILURE = 'failure';

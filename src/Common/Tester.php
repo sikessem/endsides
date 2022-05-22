@@ -1,6 +1,6 @@
 <?php
 
-namespace Endsides\Unit;
+namespace Endsides\Common;
 
 abstract class Tester {
 	public function __construct(string $name, string $description = '') {

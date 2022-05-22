@@ -3,6 +3,7 @@
 namespace Endsides\Unit;
 
 use Endsides\Util\Css;
+use Endsides\Common\Tester;
 
 class CssDeclarationBlockTester extends Tester {
 	protected $declarationBlock;

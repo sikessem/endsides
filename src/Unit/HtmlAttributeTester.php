@@ -3,6 +3,7 @@
 namespace Endsides\Unit;
 
 use Endsides\Util\Html;
+use Endsides\Common\Tester;
 
 class HtmlAttributeTester extends Tester {
 	protected $attribute;

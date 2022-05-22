@@ -1,7 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use Endsides\Unit\Tester;
+use Endsides\Common\Tester;
+
 use Endsides\Unit\CssDeclarationTester;
 use Endsides\Unit\CssDeclarationBlockTester;
 use Endsides\Unit\CssSelectorTester;

@@ -3,6 +3,7 @@
 namespace Endsides\Unit;
 
 use Endsides\Util\Css;
+use Endsides\Common\Tester;
 
 class CssSelectorTester extends Tester {
 	protected $selector;
