@@ -31,7 +31,7 @@ else {
 	$messages['success'][] = 'Declaration is marked as important';
 }
 
-$attribute = new Attribute('style', 'color: red !iimportant;');
+$attribute = new Attribute('style', 'color: red !important;');
 
 if ($attribute->getName() !== 'style') {
 	$messages['failure'][] = 'Attribute name is not set correctly';
