@@ -2,6 +2,7 @@
 <?php
 
 use Endsides\Css\Declaration;
+use Endsides\Html\Attribute;
 
 require_once __DIR__ . '/src/autoload.php';
 
@@ -30,19 +31,22 @@ else {
 	$messages['success'][] = 'Declaration is marked as important';
 }
 
-if ($declaration->beautify() !== 'color: red !important;') {
-	$messages['failure'][] = 'Declaration is not beautified correctly';
+$attribute = new Attribute('style', 'color: red !iimportant;');
+
+if ($attribute->getName() !== 'style') {
+	$messages['failure'][] = 'Attribute name is not set correctly';
 }
 else {
-	$messages['success'][] = 'Declaration is beautified correctly';
+	$messages['success'][] = 'Attribute name is set correctly';
 }
 
-if ($declaration->minify() !== 'color:red!important') {
-	$messages['failure'][] = 'Declaration is not minified correctly';
+if ($attribute->getValue() !== 'color: red !important;') {
+	$messages['failure'][] = 'Attribute value is not set correctly';
 }
 else {
-	$messages['success'][] = 'Declaration is minified correctly';
+	$messages['success'][] = 'Attribute value is set correctly';
 }
+
 
 foreach ($messages as $type => $_messages) {
 	foreach ($_messages as $message) {
@@ -65,4 +69,8 @@ foreach ($messages as $type => $_messages) {
 	}
 }
 
-exit(empty($messages['failure']) ? 0 : 1);
+if (!empty($messages['failure'])) {
+	echo "\x07";
+	exit(1);
+}
+exit(0);
