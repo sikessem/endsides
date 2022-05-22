@@ -50,7 +50,7 @@ class DeclarationBlock {
 
 	public function getDeclaration(string $property): ?Declaration {
 		foreach ($this->getDeclarations() as $declaration) {
-			if (strtolower($declaration->getProperty()) === strtolower($property)) {
+			if ($declaration->getProperty()->nameIs($property)) {
 				return $declaration;
 			}
 		}

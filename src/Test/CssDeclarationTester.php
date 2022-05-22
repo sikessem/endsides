@@ -13,12 +13,12 @@ class CssDeclarationTester extends Tester {
 	}
 
 	public function testProperty(): self {
-		$this->assert($this->declaration->getProperty() === 'color', 'Property');
+		$this->assert($this->declaration->getProperty()->nameIs('color'), 'Property');
 		return $this;
 	}
 
 	public function testValue(): self {
-		$this->assert($this->declaration->getValue() === 'red', 'Value');
+		$this->assert('red' === $this->declaration->getValue(), 'Value');
 		return $this;
 	}
 

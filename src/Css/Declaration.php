@@ -3,20 +3,20 @@
 namespace Endsides\Css;
 
 class Declaration {
-	public function __construct($property, int|string $value, bool $important = false) {
+	public function __construct(string|Property $property, int|string $value, bool $important = false) {
 		$this->setProperty($property);
 		$this->setValue($value);
 		$this->setImportance($important);
 	}
 
-	protected string $property;
+	protected Property $property;
 
-	public function setProperty(string $property): self {
-		$this->property = $property;
+	public function setProperty(string|Property $property): self {
+		$this->property = $property instanceof Property ? $property : new Property($property);
 		return $this;
 	}
 
-	public function getProperty(): string {
+	public function getProperty(): Property {
 		return $this->property;
 	}
 
