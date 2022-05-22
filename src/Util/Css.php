@@ -3,10 +3,11 @@
 namespace Endsides\Util;
 
 use Endsides\Css\{
-	Selector,
+	Property,
 	Declaration,
 	DeclarationBlock,
-	Property,
+	Selector,
+	SelectorGroup,
 };
 
 class Css {
@@ -24,5 +25,9 @@ class Css {
 
 	public static function selector(string $pattern): Selector {
 		return new Selector($pattern);
+	}
+
+	public static function selectorGroup(Selector ...$selectors): SelectorGroup {
+		return new SelectorGroup(...$selectors);
 	}
 }

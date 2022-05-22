@@ -6,6 +6,7 @@ use Endsides\Common\Tester;
 use Endsides\Unit\CssDeclarationTester;
 use Endsides\Unit\CssDeclarationBlockTester;
 use Endsides\Unit\CssSelectorTester;
+use Endsides\Unit\CssSelectorGroupTester;
 use Endsides\Unit\HtmlAttributeTester;
 
 require_once __DIR__ . '/src/autoload.php';
@@ -18,6 +19,9 @@ $declarationBlockTester->test();
 
 $selectorTester = new CssSelectorTester();
 $selectorTester->test();
+
+$selectorGroupTester = new CssSelectorGroupTester();
+$selectorGroupTester->test();
 
 $attributeTester = new HtmlAttributeTester();
 $attributeTester->test();
