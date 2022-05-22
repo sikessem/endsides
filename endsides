@@ -1,11 +1,11 @@
 #!/usr/bin/env php
 <?php
 
-use Endsides\Test\Tester;
-use Endsides\Test\CssDeclarationTester;
-use Endsides\Test\CssDeclarationBlockTester;
-use Endsides\Test\CssSelectorTester;
-use Endsides\Test\HtmlAttributeTester;
+use Endsides\Unit\Tester;
+use Endsides\Unit\CssDeclarationTester;
+use Endsides\Unit\CssDeclarationBlockTester;
+use Endsides\Unit\CssSelectorTester;
+use Endsides\Unit\HtmlAttributeTester;
 
 require_once __DIR__ . '/src/autoload.php';
 

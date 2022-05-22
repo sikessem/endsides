@@ -1,6 +1,6 @@
 <?php
 
-namespace Endsides\Test;
+namespace Endsides\Unit;
 
 use Endsides\Html\Attribute;
 
