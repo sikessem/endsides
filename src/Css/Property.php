@@ -2,9 +2,12 @@
 
 namespace Endsides\Css;
 
-use Endsides\Common\Trait\Name;
+use Endsides\Common\{
+	Interface\Nameable,
+	Trait\Name,
+};
 
-class Property {
+class Property implements Nameable {
 	use Name;
 
 	public function __construct(string $name) {

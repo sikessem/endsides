@@ -15,7 +15,7 @@ class Css {
 		return new Property($name);
 	}
 
-	public static function declaration(string $name, int|string $value, bool $important = false): Declaration {
+	public static function declaration(string $name, mixed $value = null, bool $important = false): Declaration {
 		return new Declaration($name, $value, $important);
 	}
 

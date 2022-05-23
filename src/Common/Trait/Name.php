@@ -6,6 +6,9 @@ trait Name {
 	protected string $name;
 
 	public function setName(string $name): self {
+		if (!preg_match('/^\s*(?P<name>[a-zA-Z_\x7f-\xff-][a-zA-Z0-9_\x7f-\xff-]*)\s*$/', $name, $matches)) {
+			$name = $matches['name'];
+		}
 		$this->name = $name;
 		return $this;
 	}

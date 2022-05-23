@@ -2,24 +2,18 @@
 
 namespace Endsides\Html;
 
-use Endsides\Common\Trait\Name;
+use Endsides\Common\{
+	Interface\Nameable,
+	Trait\Name,
+	Interface\Valuable,
+	Trait\Value,
+};
 
-class Attribute {
-	use Name;
+class Attribute implements Nameable, Valuable {
+	use Name, Value;
 
-	public function __construct(string $name, string $value) {
+	public function __construct(string $name, mixed $value = null) {
 		$this->setName($name);
 		$this->setValue($value);
-	}
-
-	protected string $value = '';
-
-	public function setValue(string $value): self {
-		$this->value = $value;
-		return $this;
-	}
-
-	public function getValue(): string {
-		return $this->value;
 	}
 }

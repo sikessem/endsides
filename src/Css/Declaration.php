@@ -2,8 +2,15 @@
 
 namespace Endsides\Css;
 
-class Declaration {
-	public function __construct(string|Property $property, int|string $value, bool $important = false) {
+use Endsides\Common\{
+	Interface\Valuable,
+	Trait\Value,
+};
+
+class Declaration implements Valuable {
+	use Value;
+
+	public function __construct(string|Property $property, mixed $value = null, bool $important = false) {
 		$this->setProperty($property);
 		$this->setValue($value);
 		$this->setImportance($important);
@@ -18,17 +25,6 @@ class Declaration {
 
 	public function getProperty(): Property {
 		return $this->property;
-	}
-
-	protected int|string $value;
-
-	public function setValue(int|string $value): self {
-		$this->value = $value;
-		return $this;
-	}
-
-	public function getValue(): int|string {
-		return $this->value;
 	}
 
 	protected bool $important;
