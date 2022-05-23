@@ -8,6 +8,7 @@ use Endsides\Unit\CssDeclarationBlockTester;
 use Endsides\Unit\CssSelectorTester;
 use Endsides\Unit\CssSelectorGroupTester;
 use Endsides\Unit\HtmlAttributeTester;
+use Endsides\Unit\HtmlAttributeListTester;
 
 require_once __DIR__ . '/src/autoload.php';
 
@@ -25,5 +26,8 @@ $selectorGroupTester->test();
 
 $attributeTester = new HtmlAttributeTester();
 $attributeTester->test();
+
+$attributeListTester = new HtmlAttributeListTester();
+$attributeListTester->test();
 
 Tester::run();
