@@ -2,11 +2,12 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Util\Html;
 use Endsides\Common\Tester;
+use Endsides\Html\Attribute;
+use Endsides\Util\Html;
 
 class HtmlAttributeTester extends Tester {
-	protected $attribute;
+	protected Attribute $attribute;
 
 	public function __construct() {
 		parent::__construct(Attribute::class);

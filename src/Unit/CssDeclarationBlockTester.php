@@ -2,11 +2,12 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Util\Css;
 use Endsides\Common\Tester;
+use Endsides\Css\DeclarationBlock;
+use Endsides\Util\Css;
 
 class CssDeclarationBlockTester extends Tester {
-	protected $declarationBlock;
+	protected DeclarationBlock $declarationBlock;
 
 	public function __construct() {
 		parent::__construct(DeclarationBlock::class);

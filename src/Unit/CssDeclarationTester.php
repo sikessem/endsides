@@ -2,11 +2,12 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Util\Css;
 use Endsides\Common\Tester;
+use Endsides\Css\Declaration;
+use Endsides\Util\Css;
 
 class CssDeclarationTester extends Tester {
-	protected $declaration;
+	protected Declaration $declaration;
 
 	public function __construct() {
 		parent::__construct(Declaration::class);

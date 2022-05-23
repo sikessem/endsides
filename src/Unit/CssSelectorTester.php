@@ -2,11 +2,12 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Util\Css;
 use Endsides\Common\Tester;
+use Endsides\Css\Selector;
+use Endsides\Util\Css;
 
 class CssSelectorTester extends Tester {
-	protected $selector;
+	protected Selector $selector;
 
 	public function __construct() {
 		parent::__construct(Selector::class);

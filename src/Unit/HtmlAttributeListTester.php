@@ -2,14 +2,15 @@
 
 namespace Endsides\Unit;
 
-use Endsides\Util\Html;
 use Endsides\Common\Tester;
+use Endsides\Html\AttributeList;
+use Endsides\Util\Html;
 
 class HtmlAttributeListTester extends Tester {
-	protected $attributeList;
+	protected AttributeList $attributeList;
 
 	public function __construct() {
-		parent::__construct(AttributeGroup::class);
+		parent::__construct(AttributeList::class);
 		$this->attributeList = Html::attributeList(...[
 			Html::attribute('class', 'foo'),
 			Html::attribute('id', 'bar'),

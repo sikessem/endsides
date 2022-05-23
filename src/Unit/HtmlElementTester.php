@@ -3,11 +3,11 @@
 namespace Endsides\Unit;
 
 use Endsides\Common\Tester;
-use Endsides\Util\Html;
 use Endsides\Html\Element;
+use Endsides\Util\Html;
 
 class HtmlElementTester extends Tester {
-	protected $element;
+	protected Element $element;
 
 	public function __construct() {
 		parent::__construct(Element::class);
