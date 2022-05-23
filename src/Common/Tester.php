@@ -47,7 +47,62 @@ abstract class Tester {
 		return $this;
 	}
 
-	public static function run(): void {
+	public static function performTestsFrom(string $path, string $namespace, string $pattern = '*Tester', string $extension = '.php'): void {
+		if (!($path = realpath($path))) {
+			throw new \InvalidArgumentException("$path does not exist.");
+		}
+
+		is_dir($path) ? self::performTestsFromDir($path, $namespace, $pattern, $extension) : self::performTestsFromFile($path, $namespace, $pattern, $extension);
+	}
+
+	public static function performTestsFromDir(string $dir, string $namespace, string $pattern = '*Tester', string $extension = '.php'): void {
+		if (!is_dir($dir)) {
+			throw new \InvalidArgumentException("$dir is not a directory.");
+		}
+
+		$names = scandir($dir);
+		foreach ($names as $name) {
+			 if (!str_starts_with($name, '.')) {
+				 self::performTestsFrom($path = $dir . DIRECTORY_SEPARATOR . $name, is_dir($path) ? "$namespace\\$name" : $namespace, $pattern, $extension);
+			 }
+		}
+	}
+
+	public static function performTestsFromFile(string $file, string $namespace, string $pattern = '*Tester', string $extension = '.php'): void {
+		if (!is_file($file)) {
+			throw new \InvalidArgumentException("$file is not a file.");
+		}
+
+		$name = substr(basename($file), 0, -strlen($extension));
+		if (fnmatch($pattern, $name)) {
+			 $tester = "\\$namespace\\$name";
+			 if (class_exists($tester) && is_subclass_of($tester, Tester::class)) {
+				 self::performTestsFromObject($tester);
+			 }
+		}
+	}
+
+	public static function performTestsFromObject(string|object $class): void {
+		if (is_string($class)) {
+			$class = new $class;
+		}
+
+		if (!is_object($class)) {
+			throw new \InvalidArgumentException("$class is not an object.");
+		}
+
+		if (!is_subclass_of($class, Tester::class)) {
+			throw new \InvalidArgumentException("$class is not a subclass of " . Tester::class . ".");
+		}
+
+		if (!method_exists($class, 'test')) {
+			throw new \InvalidArgumentException("$class does not have a test method.");
+		}
+
+		$class->test();
+	}
+
+	public static function displayResults(): void {
 		$count_failures = 0;
 		$count_successes = 0;
 

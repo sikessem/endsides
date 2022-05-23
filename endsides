@@ -3,31 +3,8 @@
 
 use Endsides\Common\Tester;
 
-use Endsides\Unit\CssDeclarationTester;
-use Endsides\Unit\CssDeclarationBlockTester;
-use Endsides\Unit\CssSelectorTester;
-use Endsides\Unit\CssSelectorGroupTester;
-use Endsides\Unit\HtmlAttributeTester;
-use Endsides\Unit\HtmlAttributeListTester;
+$autoloader = require_once __DIR__ . '/src/autoload.php';
 
-require_once __DIR__ . '/src/autoload.php';
+Tester::performTestsFrom($autoloader->getDirectory() . 'Unit', $autoloader->getNamespace() . 'Unit');
 
-$declarationTester = new CssDeclarationTester();
-$declarationTester->test();
-
-$declarationBlockTester = new CssDeclarationBlockTester();
-$declarationBlockTester->test();
-
-$selectorTester = new CssSelectorTester();
-$selectorTester->test();
-
-$selectorGroupTester = new CssSelectorGroupTester();
-$selectorGroupTester->test();
-
-$attributeTester = new HtmlAttributeTester();
-$attributeTester->test();
-
-$attributeListTester = new HtmlAttributeListTester();
-$attributeListTester->test();
-
-Tester::run();
+Tester::displayResults();
